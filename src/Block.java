@@ -2,12 +2,20 @@ import java.util.Date;
 
 public class Block {
 	
+	// digital identification for use on chain
 	public String hash;
+	// implements a linked list structure through node reference
 	public String previousHash;
-	private String data; // this is just a simple message for now. 
-	private long timeStamp; // uses the date from util package
+	private String data;
+	private long timeStamp;
 	
 	// constructor. Implementation of a linked list data structure 
-	public Block ()
+	public Block (String data, String previousHash) {
+		
+		this.data = data;
+		this.previousHash = previousHash;
+		this.timeStamp = new Date().getTime();
+		
+	}
 
 }
