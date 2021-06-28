@@ -15,7 +15,21 @@ public class Block {
 		this.data = data;
 		this.previousHash = previousHash;
 		this.timeStamp = new Date().getTime();
+		this.hash = calculateHash();
 		
+	}
+	
+	// helper method for SHA256 hash encryption
+	public String calculateHash() {
+		
+		// allocation of variable params using static method call
+		String returnedHash = StringUtility.applySha256(
+				previousHash +
+				Long.toString(timeStamp) +
+				data
+				);
+				
+		return returnedHash;
 	}
 
 }

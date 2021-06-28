@@ -1,5 +1,6 @@
 import java.security.MessageDigest;
 
+// helper class that allows for the encryption of the block hash
 public class StringUtility {
 	
 	public static String applySha256(String input) {
