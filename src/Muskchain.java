@@ -1,16 +1,20 @@
+import java.util.ArrayList;
+import com.google.gson.GsonBuilder;
+
 
 public class Muskchain {
+	
+	public static ArrayList<Block> blockchain = new ArrayList<Block>();
 
 	public static void main(String[] args) {
 		
-		Block genesisBlock = new Block("initial block", "0");
-		System.out.println("Hash for block 1: " + genesisBlock.hash);
+		blockchain.add(new Block("genesis block", "0"));		
+		blockchain.add(new Block("second block",blockchain.get(blockchain.size()-1).hash)); 
+		blockchain.add(new Block("third block",blockchain.get(blockchain.size()-1).hash));
 		
-		Block secondBlock = new Block("second block", genesisBlock.hash);
-		System.out.println("Hash for block 2: " + secondBlock.hash);
-		
-		Block thirdBlock = new Block("third block", secondBlock.hash);
-		System.out.println("Hash for block 3: " + thirdBlock.hash);
+		String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);		
+		System.out.println(blockchainJson);
+
 
 	}
 
